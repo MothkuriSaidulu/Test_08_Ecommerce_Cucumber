@@ -80,6 +80,7 @@ public class Page_01_HomePage extends Actions {
 		try {
 			Thread.sleep(1000);
 			waitForElementToVisable(successAlert_msg, "successfull");
+			System.out.println(successAlert_msg.getText());
 			Assert.assertEquals("Password Changed Successfully",  successAlert_msg.getText());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
