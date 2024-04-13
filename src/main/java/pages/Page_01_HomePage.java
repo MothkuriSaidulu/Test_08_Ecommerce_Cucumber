@@ -39,6 +39,9 @@ public class Page_01_HomePage extends Actions {
 
 	@FindBy(xpath = "//a[contains(text(),'Forgot password?')]")
 	private WebElement forgotLink;
+	
+	@FindBy(xpath = "//div[@id='toast-container'] //div[@aria-label='Password Changed Successfully']")
+	private WebElement successAlert_msg;
 
 	public void enterEmailID(String emaild) {
 
@@ -70,6 +73,18 @@ public class Page_01_HomePage extends Actions {
 
 	public void click_On_forgot_link() {
 		click(forgotLink, "forgot link");
+	}
+	
+	public void password_Change_success_msg() {
+		
+		try {
+			Thread.sleep(1000);
+			waitForElementToVisable(successAlert_msg, "successfull");
+			Assert.assertEquals("Password Changed Successfully",  successAlert_msg.getText());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

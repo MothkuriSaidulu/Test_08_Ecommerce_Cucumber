@@ -105,7 +105,8 @@ public class stepDefination extends BaseClass {
 
 	@Then("User should be able to see success message.")
 	public void user_should_be_able_to_see_success_message() {
-		
+		homePageObject = new Page_01_HomePage(driver);
+		homePageObject .password_Change_success_msg();
 
 	}
 
