@@ -15,6 +15,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.Page_01_HomePage;
 import pages.Page_02_RegisterPage;
+import pages.Page_03_Forgot_Password;
 
 public class BaseClass {
 
@@ -24,6 +25,7 @@ public class BaseClass {
 	public FileInputStream file;
 	public static Page_01_HomePage homePageObject;
 	public static Page_02_RegisterPage registerPageObject;
+	public Page_03_Forgot_Password forgot_object;
 
 	public void initiateBrowser() throws IOException {
 
