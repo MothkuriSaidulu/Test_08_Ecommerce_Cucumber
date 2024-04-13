@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,10 +34,42 @@ public class Page_01_HomePage extends Actions {
 	@FindBy(xpath = "//p[@class='login-wrapper-footer-text'] //a")
 	private WebElement Register_Here;
 
+	@FindBy(xpath = "//div[contains(@role,'alert')]")
+	private WebElement alert;
+
+	@FindBy(xpath = "//a[contains(text(),'Forgot password?')]")
+	private WebElement forgotLink;
+
+	public void enterEmailID(String emaild) {
+
+		enter_Text(Email_Text, "enter email id", emaild);
+
+	}
+
+	public void enterPassword(String password) {
+		enter_Text(Password_Text, "Password text", password);
+
+	}
+
+	public void click_On_Login_Btn() {
+		click(LogIn_Btn, "user clicked on login button");
+	}
+
 	public void user_Clicked_Register() {
-		
+
 		click(Register_Here, " Register here ");
 
+	}
+
+	public void IncorrectDeatils_alert_message() {
+		waitForElementToVisable(alert, "alert message");
+		String incorrectMessage = alert.getText();
+//		System.out.println(incorrectMessage);
+		Assert.assertEquals("Incorrect email or password.", incorrectMessage);
+	}
+
+	public void click_On_forgot_link() {
+		click(forgotLink, "forgot link");
 	}
 
 }
