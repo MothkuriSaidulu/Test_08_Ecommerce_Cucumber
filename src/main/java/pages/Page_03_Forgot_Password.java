@@ -41,6 +41,9 @@ public class Page_03_Forgot_Password extends Actions {
 	@FindBy(xpath = "//button[@type='submit']")
 	private WebElement submit_btn;
 
+	
+	
+	
 // Implement actions
 
 	public void verify_New_passsword_screen() 

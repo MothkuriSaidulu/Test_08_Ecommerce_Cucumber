@@ -17,4 +17,4 @@ Feature: Verify Forgot password funtionality
 
     Examples: 
       | emailID          | password  |NewPassword|
-      | SHhoyb@gmail.com | Chary@129 |Chary@123  |
+      | SHhoyb@gmail.com | Chary@129 |Chary@126  |
