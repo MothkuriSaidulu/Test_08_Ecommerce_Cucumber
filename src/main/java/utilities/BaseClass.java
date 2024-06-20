@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
@@ -19,34 +20,35 @@ import pages.Page_03_Forgot_Password;
 
 public class BaseClass {
 
-	public WebDriver driver;
-	public Properties property;
-	public String browserName;
-	public FileInputStream file;
+	public static WebDriver driver;
+	public static Properties property;
+	public static String getPropertyValue;
+	public static FileInputStream file;
+	public static String url;
+
 	public static Page_01_HomePage homePageObject;
 	public static Page_02_RegisterPage registerPageObject;
-	public Page_03_Forgot_Password forgot_object;
+	public static Page_03_Forgot_Password forgot_object;
 
 	public void initiateBrowser() throws IOException {
 
 		property = new Properties();
 
-		FileInputStream file = new FileInputStream("config.properties");
+		file = new FileInputStream("config.properties");
 		property.load(file);
+		getPropertyValue = property.getProperty("Browser");
 
-		browserName = property.getProperty("Browser");
-
-		if (browserName.contains("Chrome")) {
+		if (getPropertyValue.contains("Chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			options.setPageLoadStrategy(PageLoadStrategy.EAGER);
 			WebDriverManager.chromedriver().setup();
 
-			System.out.println("******** Browser Launched  *******");
+			System.out.println("******** Browser Launched Successfully *******");
 
 			driver = new ChromeDriver(options);
 			driver.manage().deleteAllCookies();
 
-		} else if (browserName.contains("Edge")) {
+		} else if (getPropertyValue.contains("Edge")) {
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
 		}
@@ -64,8 +66,8 @@ public class BaseClass {
 			property = new Properties();
 			file = new FileInputStream("config.properties");
 			property.load(file);
-			String url = property.getProperty("Url");
-			driver.get(url);
+			getPropertyValue = property.getProperty("Url");
+			driver.get(getPropertyValue);
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -75,12 +77,14 @@ public class BaseClass {
 			e.printStackTrace();
 		}
 	}
-	
-	@AfterClass
-	public void closeBrowser() 
-	{
-		driver.quit();
-		
+
+	public void closeBrowser() {
+		try {
+			driver.quit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

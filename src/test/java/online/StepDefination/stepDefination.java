@@ -100,14 +100,19 @@ public class stepDefination extends BaseClass {
 	public void user_click_on_save_new_passowrd_button() {
 		forgot_object = new Page_03_Forgot_Password(driver);
 		forgot_object.click_On_Login_Btn();
-		
+
 	}
 
 	@Then("User should be able to see success message.")
-	public void user_should_be_able_to_see_success_message() {
+	public void user_should_be_able_to_see_success_message() throws InterruptedException {
 		homePageObject = new Page_01_HomePage(driver);
-		homePageObject .password_Change_success_msg();
-		
+		homePageObject.password_Change_success_msg();
+
+	}
+
+	@Then("Close the browser.")
+	public void close_the_browser() {
+		closeBrowser();
 
 	}
 
