@@ -19,9 +19,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Actions extends BaseClass {
 
-	public static WebDriver driver;
-	public static String randomString,getPropertyValue;
-
+//	public static WebDriver driver;
+	public static String randomString;
+	public static String rootPath = System.getProperty("user.dir");
 	public static final Logger logger = Logger.getLogger(Actions.class.getName());
 
 	@SuppressWarnings("static-access")
@@ -118,17 +118,7 @@ public class Actions extends BaseClass {
 			Assert.fail("Exception : WHILE TRYING TO VERIFY THE TEXT INSIDE A WEB ELEMENT : "
 					+ "Actual and expected texts are not matching for: " + "<b>" + elementDesc + "</b>"
 					+ " due to the Exception: " + e.getMessage());
-
 		}
-
-	}
-
-	public String getProperty(String value) throws IOException {
-		property = new Properties();
-		property.load(file);
-
-		getPropertyValue = property.getProperty(value);
-		return getPropertyValue;
 	}
 
 	public String randomString() {
@@ -141,6 +131,7 @@ public class Actions extends BaseClass {
 
 		return randomString;
 	}
+
 	/*
 	 * public void takeScreenshotOfEachPage() throws IOException { File filePath;
 	 * String screenshotName = null; try { Date date = new Date(); String

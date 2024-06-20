@@ -11,6 +11,5 @@ Feature: SignUp Module
     And User fill the details.
     When User clicked on register button.
     Then User should be able see "Account Created Successfully" message.
-
-  ##And Close the browser.
+		And Close the browser.
 

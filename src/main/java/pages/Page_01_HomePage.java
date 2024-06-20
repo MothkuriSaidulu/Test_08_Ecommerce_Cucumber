@@ -39,7 +39,7 @@ public class Page_01_HomePage extends Actions {
 
 	@FindBy(xpath = "//a[contains(text(),'Forgot password?')]")
 	private WebElement forgotLink;
-	
+
 	@FindBy(xpath = "//div[@id='toast-container'] //div[@aria-label='Password Changed Successfully']")
 	private WebElement successAlert_msg;
 
@@ -50,6 +50,7 @@ public class Page_01_HomePage extends Actions {
 	}
 
 	public void enterPassword(String password) {
+		
 		enter_Text(Password_Text, "Password text", password);
 
 	}
@@ -74,18 +75,14 @@ public class Page_01_HomePage extends Actions {
 	public void click_On_forgot_link() {
 		click(forgotLink, "forgot link");
 	}
-	
-	public void password_Change_success_msg() {
-		
-		try {
-			Thread.sleep(1000);
-			waitForElementToVisable(successAlert_msg, "successfull");
-			System.out.println(successAlert_msg.getText());
-			Assert.assertEquals("Password Changed Successfully",  successAlert_msg.getText());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+	public void password_Change_success_msg() throws InterruptedException {
+
+		Thread.sleep(1000);
+		waitForElementToVisable(successAlert_msg, "successfull");
+		System.out.println(successAlert_msg.getText());
+		Assert.assertEquals("Password Changed Successfully", successAlert_msg.getText());
+
 	}
 
 }

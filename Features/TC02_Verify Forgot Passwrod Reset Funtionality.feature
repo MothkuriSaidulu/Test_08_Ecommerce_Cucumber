@@ -14,6 +14,8 @@ Feature: Verify Forgot password funtionality
     And User entered emaild as "<emailID>" and password as "<NewPassword>" and confirm passowrd as "<NewPassword>".
     And User click on save new passowrd button.
     Then User should be able to see success message.
+    And Close the browser.
+    
 
     Examples: 
       | emailID          | password  |NewPassword|
